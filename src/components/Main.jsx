@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import BookCard from './common/BookCard';
 
@@ -24,7 +25,9 @@ class Main extends Component {
       <div>
         <header>
           <nav className="navbar">
-            <h1 className="navbar-title">My Reads</h1>
+            <Link to="/" className="navbar-title">
+              <h1>My Reads</h1>
+            </Link>
           </nav>
         </header>
         <main>

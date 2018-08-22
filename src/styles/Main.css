@@ -11,12 +11,25 @@
 
 .navbar-title {
   color: #ffffff;
+  text-decoration: none;
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: antialiased;
 }
 
 #currentlyReading {
-  margin-top: 80px;
+  padding: 20px;
+  margin-top: 70px;
+  background-color: orange;
+}
+
+#wantToRead {
+  padding: 20px;
+  background-color: dodgerblue;
+}
+
+#read {
+  padding: 20px;
+  background-color: green;
 }
 
 .books-container {
