@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 import BookCard from './common/BookCard';
+import Navbar from './common/Navbar';
 
 import '../styles/Main.css';
 
@@ -24,13 +25,7 @@ class Main extends Component {
     const { currentlyReadingBooks, wantToReadBooks, readBooks } = this.props;
     return (
       <div>
-        <header>
-          <nav className="navbar">
-            <Link to="/" className="navbar-title">
-              <h1>My Reads</h1>
-            </Link>
-          </nav>
-        </header>
+        <Navbar />
         <main>
           <section id="currentlyReading">
             <h2 className="section-title">Currently Reading</h2>
