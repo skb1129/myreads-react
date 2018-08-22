@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Main } from '../components';
+import { Main, Loader } from '../components';
 import { BooksAPI } from '../apis';
 
 class MainRoute extends Component {
@@ -8,6 +8,7 @@ class MainRoute extends Component {
     currentlyReadingBooks: [],
     wantToReadBooks: [],
     readBooks: [],
+    isLoading: true,
   };
 
   async componentDidMount() {
@@ -41,12 +42,20 @@ class MainRoute extends Component {
       currentlyReadingBooks,
       wantToReadBooks,
       readBooks,
+      isLoading: false,
     });
   };
 
   render() {
-    const { currentlyReadingBooks, wantToReadBooks, readBooks } = this.state;
-
+    const {
+      currentlyReadingBooks,
+      wantToReadBooks,
+      readBooks,
+      isLoading,
+    } = this.state;
+    if (isLoading) {
+      return (<Loader />);
+    }
     return (
       <Main
         currentlyReadingBooks={currentlyReadingBooks}
