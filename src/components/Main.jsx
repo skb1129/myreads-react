@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 
 import BookCard from './common/BookCard';
 
@@ -50,6 +51,11 @@ class Main extends Component {
             </div>
           </section>
         </main>
+        <footer>
+          <Link to="/search" className="search-button">
+            <FaSearch size={40} color="#fff" />
+          </Link>
+        </footer>
       </div>
     );
   }
