@@ -29,19 +29,19 @@ class Main extends Component {
         </header>
         <main>
           <section id="currentlyReading">
-            <h2>Currently Reading</h2>
+            <h2 className="section-title">Currently Reading</h2>
             <div className="books-container">
               {currentlyReadingBooks.map(book => (<BookCard key={book.id} book={book} />))}
             </div>
           </section>
           <section id="wantToRead">
-            <h2>Want to Read</h2>
+            <h2 className="section-title">Want to Read</h2>
             <div className="books-container">
               {wantToReadBooks.map(book => (<BookCard key={book.id} book={book} />))}
             </div>
           </section>
           <section id="read">
-            <h2>Read</h2>
+            <h2 className="section-title">Read</h2>
             <div className="books-container">
               {readBooks.map(book => (<BookCard key={book.id} book={book} />))}
             </div>

@@ -1,4 +1,6 @@
 .navbar {
+  position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,4 +13,18 @@
   color: #ffffff;
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: antialiased;
+}
+
+#currentlyReading {
+  margin-top: 80px;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-title {
+  text-align: center;
 }

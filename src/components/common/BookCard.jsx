@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../../styles/BookCard.css';
+
 class BookCard extends Component {
   static propTypes = {
     book: PropTypes.object,
@@ -14,14 +16,13 @@ class BookCard extends Component {
     const { book } = this.props;
 
     return (
-      <div>
-        <img src={book.imageLinks.thumbnail} alt={book.description} />
-        <h3>{book.title}</h3>
-        <p>{book.subtitle}</p>
-        <p>
-          Rated:
-          <span>{book.averageRating}</span>
-        </p>
+      <div className="card-container">
+        <img className="card-image" src={book.imageLinks.thumbnail} alt={book.description} />
+        <div>
+          <h3>{book.title}</h3>
+          <p>{book.subtitle}</p>
+          <p>{`Rating: ${book.averageRating || 'Unrated'}`}</p>
+        </div>
       </div>
     );
   }
