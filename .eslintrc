@@ -6,12 +6,13 @@
     "node": true
   },
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "jsx": true
     },
-    "ecmaVersion": 6,
+    "ecmaVersion": 7,
     "sourceType": "module"
   },
   "plugins": [
@@ -27,7 +28,8 @@
     "indent": [2, 2],
     "prefer-const": 2,
     "prefer-template": 2,
-    "react/prefer-stateless-function": 0,
-    "react/jsx-filename-extension": 0
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prefer-stateless-function": 0
   }
 }
