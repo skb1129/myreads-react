@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/Main.css';
+
 class Main extends Component {
   static propTypes = {
-    books: PropTypes.array,
+    currentlyReadingBooks: PropTypes.array,
+    wantToReadBooks: PropTypes.array,
+    readBooks: PropTypes.array,
   };
 
   static defaultProps = {
-    books: [],
+    currentlyReadingBooks: [],
+    wantToReadBooks: [],
+    readBooks: [],
   };
 
   render() {
-    const { books } = this.props;
+    const { currentlyReadingBooks, wantToReadBooks, readBooks } = this.props;
     return (
-      <div>
-        {JSON.stringify(books)}
+      <div className="navbar">
+        <h1 className="navbar-title">My Reads</h1>
       </div>
     );
   }
