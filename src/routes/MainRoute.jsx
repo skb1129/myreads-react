@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Search extends Component {
+class MainRoute extends Component {
   render() {
     return (
       <div>
-        Search Page
+        Main Page
       </div>
     );
   }
 }
 
-export default Search;
+export default MainRoute;

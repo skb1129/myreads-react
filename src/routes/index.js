@@ -1,7 +1,7 @@
-import Main from './Main';
-import Search from './Search';
+import MainRoute from './MainRoute';
+import SearchRoute from './SearchRoute';
 
 export {
-  Main,
-  Search,
+  MainRoute,
+  SearchRoute,
 };
