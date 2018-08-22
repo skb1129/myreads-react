@@ -22,6 +22,8 @@
     "arrow-body-style": [2, "as-needed"],
     "comma-dangle": [2, "always-multiline"],
     "curly": 2,
+    "import/newline-after-import": 2,
+    "import/order": ["error", { "newlines-between": "always" }],
     "indent": [2, 2],
     "prefer-const": 2,
     "prefer-template": 2,
