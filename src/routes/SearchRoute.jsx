@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
+import { Search } from '../components';
+
 class SearchRoute extends Component {
   render() {
-    return (
-      <div>
-        Search Page
-      </div>
-    );
+    return (<Search />);
   }
 }
 
