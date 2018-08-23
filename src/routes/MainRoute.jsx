@@ -13,8 +13,12 @@ class MainRoute extends Component {
   };
 
   async componentDidMount() {
-    const books = await BooksAPI.getAll();
-    this.setBooks(books);
+    try {
+      const books = await BooksAPI.getAll();
+      this.setBooks(books);
+    } catch (error) {
+      console.error('Error connecting to Books API', error);
+    }
   }
 
   setBooks = (books) => {
@@ -47,6 +51,17 @@ class MainRoute extends Component {
     });
   };
 
+  moveBookHandler = async (book, shelf) => {
+    this.setState({ isLoading: true });
+    try {
+      await BooksAPI.update(book, shelf);
+      const books = await BooksAPI.getAll();
+      this.setBooks(books);
+    } catch (error) {
+      console.error('Error connecting to Books API', error);
+    }
+  };
+
   render() {
     const {
       currentlyReadingBooks,
@@ -62,6 +77,7 @@ class MainRoute extends Component {
         currentlyReadingBooks={currentlyReadingBooks}
         wantToReadBooks={wantToReadBooks}
         readBooks={readBooks}
+        moveBookHandler={this.moveBookHandler}
       />
     );
   }

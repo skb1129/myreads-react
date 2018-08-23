@@ -14,6 +14,7 @@ const FALLBACK = {
 class BookCard extends Component {
   static propTypes = {
     book: PropTypes.object,
+    moveBookHandler: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -21,7 +22,7 @@ class BookCard extends Component {
   };
 
   render() {
-    const { book } = this.props;
+    const { book, moveBookHandler } = this.props;
 
     return (
       <div className="card-container">
@@ -32,9 +33,9 @@ class BookCard extends Component {
           <p className="card-text">{`Rating: ${book.averageRating || FALLBACK.rating}`}</p>
           <div className="card-buttons">
             <span className="card-text">Move to: </span>
-            {book.shelf !== SHELF.cr ? <button type="button">Currently Reading</button> : null}
-            {book.shelf !== SHELF.wtr ? <button type="button">Want to Read</button> : null}
-            {book.shelf !== SHELF.r ? <button type="button">Read</button> : null}
+            {book.shelf !== SHELF.cr ? <button type="button" onClick={() => moveBookHandler(book, SHELF.cr)}>Currently Reading</button> : null}
+            {book.shelf !== SHELF.wtr ? <button type="button" onClick={() => moveBookHandler(book, SHELF.wtr)}>Want to Read</button> : null}
+            {book.shelf !== SHELF.r ? <button type="button" onClick={() => moveBookHandler(book, SHELF.r)}>Read</button> : null}
           </div>
         </div>
       </div>

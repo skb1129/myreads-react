@@ -15,6 +15,7 @@ class Main extends Component {
     currentlyReadingBooks: PropTypes.array,
     wantToReadBooks: PropTypes.array,
     readBooks: PropTypes.array,
+    moveBookHandler: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -24,7 +25,12 @@ class Main extends Component {
   };
 
   render() {
-    const { currentlyReadingBooks, wantToReadBooks, readBooks } = this.props;
+    const {
+      currentlyReadingBooks,
+      wantToReadBooks,
+      readBooks,
+      moveBookHandler,
+    } = this.props;
     return (
       <div>
         <Navbar />
@@ -32,19 +38,25 @@ class Main extends Component {
           <section id={SHELF.cr}>
             <h2 className="section-title">Currently Reading</h2>
             <div className="books-container">
-              {currentlyReadingBooks.map(book => (<BookCard key={book.id} book={book} />))}
+              {currentlyReadingBooks.map(book => (
+                <BookCard key={book.id} book={book} moveBookHandler={moveBookHandler} />
+              ))}
             </div>
           </section>
           <section id={SHELF.wtr}>
             <h2 className="section-title">Want to Read</h2>
             <div className="books-container">
-              {wantToReadBooks.map(book => (<BookCard key={book.id} book={book} />))}
+              {wantToReadBooks.map(book => (
+                <BookCard key={book.id} book={book} moveBookHandler={moveBookHandler} />
+              ))}
             </div>
           </section>
           <section id={SHELF.r}>
             <h2 className="section-title">Read</h2>
             <div className="books-container">
-              {readBooks.map(book => (<BookCard key={book.id} book={book} />))}
+              {readBooks.map(book => (
+                <BookCard key={book.id} book={book} moveBookHandler={moveBookHandler} />
+              ))}
             </div>
           </section>
         </main>
