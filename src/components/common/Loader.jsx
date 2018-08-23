@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import '../styles/Loader.css';
+import '../../styles/Loader.css';
 
 class Loader extends Component {
   render() {

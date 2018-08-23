@@ -42,10 +42,12 @@ class SearchRoute extends Component {
   };
 
   moveBookHandler = async (book, shelf) => {
+    this.setState({ isLoading: true });
+    const { books } = this.state;
     try {
       await BooksAPI.update(book, shelf);
-      const books = await BooksAPI.getAll();
-      this.setBooks(books);
+      const updatedBooks = books.filter(item => item.id !== book.id);
+      this.setState({ books: updatedBooks, isLoading: false });
     } catch (error) {
       console.error('Error connecting to Books API', error);
     }

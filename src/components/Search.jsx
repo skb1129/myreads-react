@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Navbar from './common/Navbar';
 import BookCard from './common/BookCard';
-import Loader from './Loader';
+import Loader from './common/Loader';
 
 import '../styles/Search.css';
 

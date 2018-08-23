@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Main, Loader } from '../components';
+import { Main } from '../components';
 import { BooksAPI } from '../apis';
 import { SHELF } from '../constants';
 
@@ -69,11 +69,10 @@ class MainRoute extends Component {
       readBooks,
       isLoading,
     } = this.state;
-    if (isLoading) {
-      return (<Loader />);
-    }
+
     return (
       <Main
+        isLoading={isLoading}
         currentlyReadingBooks={currentlyReadingBooks}
         wantToReadBooks={wantToReadBooks}
         readBooks={readBooks}
