@@ -13,6 +13,9 @@
 }
 
 .card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-left: 10px;
   background-color: white;
   width: 100%;
@@ -21,4 +24,9 @@
 
 .card-text {
   color: #444;
+  font-size: 14px;
+}
+
+.card-buttons {
+  margin-bottom: 10px;
 }

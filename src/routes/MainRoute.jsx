@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Main, Loader } from '../components';
 import { BooksAPI } from '../apis';
+import { SHELF } from '../constants';
 
 class MainRoute extends Component {
   state = {
@@ -22,15 +23,15 @@ class MainRoute extends Component {
     const readBooks = [];
     books.forEach((book) => {
       switch (book.shelf) {
-      case 'currentlyReading':
+      case SHELF.cr:
         currentlyReadingBooks.push(book);
         break;
 
-      case 'wantToRead':
+      case SHELF.wtr:
         wantToReadBooks.push(book);
         break;
 
-      case 'read':
+      case SHELF.r:
         readBooks.push(book);
         break;
 
