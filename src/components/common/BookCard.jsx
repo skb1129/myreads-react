@@ -6,8 +6,11 @@ import { SHELF } from '../../constants';
 import '../../styles/BookCard.css';
 
 const FALLBACK = {
-  image: 'https://placehold.it/128x170',
+  image: 'https://dummyimage.com/128x170/707070/000000.png&text=Unavailable',
   title: 'Book Title',
+  subtitle: '',
+  description: '',
+  author: 'Unknown',
   rating: 'Unrated',
 };
 
@@ -26,10 +29,17 @@ class BookCard extends Component {
 
     return (
       <div className="card-container">
-        <img className="card-image" src={book.imageLinks.thumbnail || FALLBACK.image} alt={book.description} />
+        <img
+          className="card-image"
+          src={book.imageLinks && book.imageLinks.thumbnail
+            ? book.imageLinks.thumbnail
+            : FALLBACK.image}
+          alt={book.description || FALLBACK.description}
+        />
         <div className="card-right">
           <h3>{book.title || FALLBACK.title}</h3>
-          <p className="card-text">{book.subtitle}</p>
+          <p className="card-text">{book.subtitle || FALLBACK.subtitle}</p>
+          <p className="card-text">{`Author: ${book.authors || FALLBACK.author}`}</p>
           <p className="card-text">{`Rating: ${book.averageRating || FALLBACK.rating}`}</p>
           <div className="card-buttons">
             <span className="card-text">Move to: </span>
