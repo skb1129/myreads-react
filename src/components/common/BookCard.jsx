@@ -24,8 +24,20 @@ class BookCard extends Component {
     book: {},
   };
 
+  state = {
+    currentShelf: 'none',
+  };
+
+  componentDidMount() {
+    const { book } = this.props;
+    this.setState({
+      currentShelf: book.shelf || SHELF.none,
+    });
+  }
+
   render() {
     const { book, moveBookHandler } = this.props;
+    const { currentShelf } = this.state;
 
     return (
       <div className="card-container">
@@ -43,10 +55,38 @@ class BookCard extends Component {
           <p className="card-text">{`Rating: ${book.averageRating || FALLBACK.rating}`}</p>
           <div className="card-buttons">
             <span className="card-text">Move to: </span>
-            {book.shelf !== SHELF.cr ? <button type="button" onClick={() => moveBookHandler(book, SHELF.cr)}>Currently Reading</button> : null}
-            {book.shelf !== SHELF.wtr ? <button type="button" onClick={() => moveBookHandler(book, SHELF.wtr)}>Want to Read</button> : null}
-            {book.shelf !== SHELF.r ? <button type="button" onClick={() => moveBookHandler(book, SHELF.r)}>Read</button> : null}
-            <button type="button" onClick={() => moveBookHandler(book, 'none')}>None</button>
+            <button
+              disabled={currentShelf === SHELF.cr}
+              className={currentShelf === SHELF.cr ? 'current-shelf' : 'button'}
+              type="button"
+              onClick={() => moveBookHandler(book, SHELF.cr)}
+            >
+              Currently Reading
+            </button>
+            <button
+              disabled={currentShelf === SHELF.wtr}
+              className={currentShelf === SHELF.wtr ? 'current-shelf' : 'button'}
+              type="button"
+              onClick={() => moveBookHandler(book, SHELF.wtr)}
+            >
+              Want to Read
+            </button>
+            <button
+              disabled={currentShelf === SHELF.r}
+              className={currentShelf === SHELF.r ? 'current-shelf' : 'button'}
+              type="button"
+              onClick={() => moveBookHandler(book, SHELF.r)}
+            >
+              Read
+            </button>
+            <button
+              disabled={currentShelf === SHELF.none}
+              className={currentShelf === SHELF.none ? 'current-shelf' : 'button'}
+              type="button"
+              onClick={() => moveBookHandler(book, SHELF.none)}
+            >
+              None
+            </button>
           </div>
         </div>
       </div>

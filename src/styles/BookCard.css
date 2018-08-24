@@ -32,3 +32,14 @@
 .card-buttons {
   margin-bottom: 10px;
 }
+
+.button {
+  border-radius: 5px;
+}
+
+.current-shelf {
+  border-radius: 5px;
+  background-color: crimson;
+  color: white;
+  text-decoration: line-through;
+}
