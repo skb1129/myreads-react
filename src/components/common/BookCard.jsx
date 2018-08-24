@@ -46,6 +46,7 @@ class BookCard extends Component {
             {book.shelf !== SHELF.cr ? <button type="button" onClick={() => moveBookHandler(book, SHELF.cr)}>Currently Reading</button> : null}
             {book.shelf !== SHELF.wtr ? <button type="button" onClick={() => moveBookHandler(book, SHELF.wtr)}>Want to Read</button> : null}
             {book.shelf !== SHELF.r ? <button type="button" onClick={() => moveBookHandler(book, SHELF.r)}>Read</button> : null}
+            <button type="button" onClick={() => moveBookHandler(book, 'none')}>None</button>
           </div>
         </div>
       </div>
