@@ -2,15 +2,36 @@ import React, { Component } from 'react';
 
 import { BooksAPI } from '../apis';
 import { Search } from '../components';
-import { SEARCH_INTERVAL } from '../constants';
+import { SEARCH_INTERVAL, SHELF } from '../constants';
 
 class SearchRoute extends Component {
   state = {
+    booksOnShelf: [],
     books: [],
     timeout: null,
     isLoading: false,
     notFound: false,
   };
+
+  async componentDidMount() {
+    try {
+      const booksOnShelf = await BooksAPI.getAll();
+      this.setState({ booksOnShelf });
+    } catch (error) {
+      console.log('Error connecting to Books API', error);
+    }
+  }
+
+  updateBooks = (books, booksOnShelf) => books.map((data) => {
+    const book = { ...data };
+    book.shelf = SHELF.none;
+    booksOnShelf.forEach((bos) => {
+      if (bos.id === book.id) {
+        book.shelf = bos.shelf;
+      }
+    });
+    return book;
+  });
 
   searchHandler = (query) => {
     this.setState({ isLoading: true });
@@ -29,6 +50,10 @@ class SearchRoute extends Component {
           if (books.error) {
             books = [];
           }
+          if (books.length) {
+            const { booksOnShelf } = this.state;
+            books = this.updateBooks(books, booksOnShelf);
+          }
           this.setState({
             books,
             isLoading: false,
@@ -46,8 +71,13 @@ class SearchRoute extends Component {
     const { books } = this.state;
     try {
       await BooksAPI.update(book, shelf);
-      const updatedBooks = books.filter(item => item.id !== book.id);
-      this.setState({ books: updatedBooks, isLoading: false });
+      const booksOnShelf = await BooksAPI.getAll();
+      const updatedBooks = this.updateBooks(books, booksOnShelf);
+      this.setState({
+        booksOnShelf,
+        books: updatedBooks,
+        isLoading: false,
+      });
     } catch (error) {
       console.error('Error connecting to Books API', error);
     }
